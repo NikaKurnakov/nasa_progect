@@ -30,7 +30,7 @@ python (название файла).py --token_epic ваш_токен
 Запуск этого файла будет похож на запуск файла `get_epic_image.py`, только название будет другое:
 
 ```
-py get_nasa_image.py ваш_токен
+py get_nasa_image.py --token_nasa ваш_токен
 ```
 
 Так же и на Linux:
