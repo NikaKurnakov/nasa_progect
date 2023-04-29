@@ -44,13 +44,13 @@ python get_nasa_image.py --token_nasa ваш_токен
 Для этого запуска вам нужен id:
 
 ```
-py get_spaceX.py ваш_id
+py get_spaceX.py --id ваш_id
 ```
 
 На Linux то же самое:
 
 ```
-python get_spaceX.py ваш_id
+python get_spaceX.py --id ваш_id
 ```
 
 ### Зависимости
