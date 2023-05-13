@@ -1,13 +1,25 @@
 import requests
 import os
 
-def get_images(filename, image_list):
+
+def get_images(filename, images, parser):
     os.makedirs("images", exist_ok=True)
-    counter = 0
-    for image in image_list:
-        filename1 = f"images/{filename}_{counter}.png"
-        counter += 1
-        response = requests.get(image)
-        if response.status_code == 200:
+    args = parser.parse_args()
+    args_dict = vars(parser.parse_args())
+    for image_number, image in enumerate(images):
+        filename1 = os.path.join("images", f"{filename}_{image_number}.png")
+        if "token_epic" in args_dict:
+            params = {
+                'api_key': args.token_epic,
+            }
+            response = requests.get(image, params=params)
+        elif "token_nasa" in args_dict:
+            params = {
+                'api_key': args.token_nasa
+            }
+            response = requests.get(image, params=params)
+        else:
+            response = requests.get(image)
+        if response.ok:
             with open(filename1, 'wb') as file:
                 file.write(response.content)
