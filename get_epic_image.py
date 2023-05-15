@@ -12,7 +12,7 @@ def get_epic_picture(epic_url, args):
     unpacked_response = response.json()
     epic_images = []
     images_number = int(args.numb)
-    for image in range(number_images):
+    for image in range(images_number):
         image_name = unpacked_response[image]['image']
         image_date_json = unpacked_response[image]['date']
         if image_name and image_date_json:
