@@ -10,8 +10,9 @@ import argparse
 def send_photo_tg_chanel(delay_time, token_bot, files, chat_id):
     bot = telegram.Bot(token=token_bot)
     for file in files:
-        bot.send_photo(chat_id, open(file, 'rb'))
-        time.sleep(int(delay_time))
+        with open(file, 'rb'):
+            bot.send_photo(chat_id,)
+            time.sleep(int(delay_time))
 
 
 def main():
