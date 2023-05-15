@@ -11,7 +11,7 @@ def get_epic_picture(epic_url, args):
     response = requests.get(epic_url, params=params)
     unpacked_response = response.json()
     epic_images = []
-    number_images = int(args.numb)
+    images_number = int(args.numb)
     for image in range(number_images):
         image_name = unpacked_response[image]['image']
         image_date_json = unpacked_response[image]['date']
