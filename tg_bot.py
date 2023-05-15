@@ -20,7 +20,7 @@ def send_photo(token_bot, args, chat_id, files):
 def main():
     load_dotenv()
     token_bot = os.environ['TG_TOKEN_BOT']
-    chat_id = os.environ['CHANEL_CHAT_ID']
+    chat_id = os.environ['TG_CHANEL_CHAT_ID']
     files = glob.glob("images/*.png")
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", help="интересующий файл")
