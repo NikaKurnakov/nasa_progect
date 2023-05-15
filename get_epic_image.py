@@ -9,12 +9,12 @@ def get_epic_picture(epic_url, args):
         'api_key': args.token_epic
     }
     response = requests.get(epic_url, params=params)
-    response_json = response.json()
+    unpacked_response = response.json()
     epic_images = []
     number_images = int(args.numb)
     for image in range(number_images):
-        image_name = response_json[image]['image']
-        image_date_json = response_json[image]['date']
+        image_name = unpacked_response[image]['image']
+        image_date_json = unpacked_response[image]['date']
         if image_name and image_date_json:
             image_date_format = datetime.fromisoformat(image_date_json)
             image_date = datetime.date(image_date_format).strftime("%Y/%m/%d")
