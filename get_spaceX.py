@@ -4,7 +4,7 @@ import argparse
 import load_image
 
 
-def get_one_launch(spaceX_url, parser, args):
+def get_one_launch(parser, args):
     args_dict = vars(parser.parse_args())
     if "id" in args_dict:
         params = {
