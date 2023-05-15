@@ -1,5 +1,4 @@
 import requests
-import json
 import argparse
 import load_image
 
@@ -12,12 +11,10 @@ def get_nasa_apod_picture(nasa_url, args):
     }
     response = requests.get(nasa_url, params=params)
     picture_today = response.json()
-    date_pictures = json.dumps(picture_today)
-    json_pictures = json.loads(date_pictures)
     images = []
     for image in range(len(picture_today)):
-        if json_pictures[image]['media_type'] == 'image':
-            images.append(json_pictures[image]['url'])
+        if picture_today[image]['media_type'] == 'image':
+            images.append(picture_today[image]['url'])
     return images
 
 
