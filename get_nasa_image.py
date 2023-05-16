@@ -3,7 +3,8 @@ import argparse
 import load_image
 
 
-def get_nasa_apod_picture(nasa_url, args):
+def get_nasa_apod_picture(args):
+    nasa_url = 'https://api.nasa.gov/planetary/apod'
     params = {
         'start_date': "2023-03-15",
         'end_date': "2023-04-15",
@@ -22,7 +23,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--token_nasa", help="token nasa", required=True)
     args = parser.parse_args()
-    nasa_url = 'https://api.nasa.gov/planetary/apod'
     images_nasa = get_nasa_apod_picture(nasa_url, args)
     load_image.get_images("nasa_image", images_nasa, parser)
 
