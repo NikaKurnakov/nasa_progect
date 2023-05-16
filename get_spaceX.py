@@ -3,7 +3,8 @@ import argparse
 import load_image
 
 
-def get_one_launch(spaceX_url, parser, args):
+def get_one_launch(parser, args):
+    spaceX_url = "https://api.spacexdata.com/v5/launches/"
     args_parser = vars(parser.parse_args())
     if "id" in args_parser:
         params = {
@@ -23,7 +24,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--id", help="id интересующей картинки")
     args = parser.parse_args()
-    spaceX_url = "https://api.spacexdata.com/v5/launches/"
     images_spaceX = get_one_launch(spaceX_url, parser, args)
     load_image.get_images('spaceX_image', images_spaceX, parser)
 
