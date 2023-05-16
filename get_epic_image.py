@@ -4,7 +4,8 @@ import load_image
 from datetime import datetime
 
 
-def get_epic_picture(epic_url, args):
+def get_epic_picture(args):
+    epic_url = 'https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY'
     params = {
         'api_key': args.token_epic
     }
@@ -27,7 +28,6 @@ def main():
     parser.add_argument("--token_epic", help="token epic", required=True)
     parser.add_argument("--numb", help="numb picture")
     args = parser.parse_args()
-    epic_url = 'https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY'
     epic_function = get_epic_picture(epic_url, args)
     load_image.get_images("epic_image", epic_function, parser)
 
