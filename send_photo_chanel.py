@@ -20,8 +20,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--delay", help="время задержки в секундах")
     args = parser.parse_args()
+    args_parser = vars(parser.parse_args())
     delay_time = os.environ['DELAY']
-    if args.delay:
+    if "delay" in args_parser:
         delay_time = args.delay
     token_bot = os.environ['TG_TOKEN_BOT']
     chat_id = os.environ['CHANEL_CHAT_ID']
