@@ -1,15 +1,12 @@
-import telegram
-import os
-from dotenv import load_dotenv
 import argparse
 import random
 import glob
 
 
-def send_photo(token_bot, args, chat_id, files):
+def send_photo(token_bot, args, chat_id, files, args_parser):
     bot = telegram.Bot(token=token_bot)
     bot.send_message(text='Привет!', chat_id=chat_id)
-    if args.file:
+    if "file" in args_parser:
         with open(os.path.join("images", args.file), 'rb'):
             bot.send_photo(chat_id)
     else:
@@ -25,7 +22,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", help="интересующий файл")
     args = parser.parse_args()
-    send_photo(token_bot, args, chat_id, files)
+    args_parser = vars(parser.parse_args())
+    send_photo(token_bot, args, chat_id, files, args_parser)
 
 
 if __name__ == '__main__':
